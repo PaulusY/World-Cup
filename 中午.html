@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			background: red;
+		}
+		.con{
+			width: 100%;
+			height: 100px;
+			background: green;
+			margin: 10px 0;
+			position: relative;
+		}
+		.ans{
+			background: orange;
+			position: absolute;
+			transition: transform 1s;
+			top: -200px;
+			width: 100%;
+		}
+		.con1{
+			width: 100%;
+			height: 100px;
+			background: green;
+			margin: 10px 0;
+			position: relative;
+		}
+		.ans1{
+			background: orange;
+			position: absolute;
+			transition: transform 1s;
+			left: -16000px;
+			width: 100%;
+		}
+		.con2{
+			width: 100%;
+			height: 100px;
+			background: green;
+			margin: 10px 0;
+			position: relative;
+		}
+		.ans2{
+			background: orange;
+			position: absolute;
+			transition: transform 1s;
+			left: -16000px;
+			width: 100%;
+		}
+		.con3{
+			width: 100%;
+			height: 100px;
+			background: green;
+			margin: 10px 0;
+			position: relative;
+		}
+		.ans3{
+			background: orange;
+			position: absolute;
+			transition: transform 1s;
+			left: -16000px;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="con">
+			<p>事件冒泡？阻止浏览器默认行为？对应的原生兼容性写法该怎么写？</p>
+			<p class="ans">冒泡：在 冒泡 中，内部元素的事件会先被触发，然后再触发外部元素<br>兼容
+			function stopPropagation(e) {  
+    			e = e || window.event;  
+   				 if(e.stopPropagation) {  //Firefox/Chrome/Opera/Safari   
+        		e.stopPropagation();  
+    		} else {  
+       			 e.cancelBubble = true;  //ie  
+    		}  
+			}  
+</p>
+		</div>
+		<div class="con1">
+			<p>阻止浏览器默认行为？对应的原生兼容性写法该怎么写？</p>
+			<p class="ans1">兼容处理：
+function stopPropagation(e) {  
+    e = e || window.event;  
+    if(e.preventDefault) {  //Firefox/Chrome/Opera/Safari   
+        e.preventDefault();  
+    } else {  
+        e.returnValue = false;  //ie  
+    }  
+}  
+</p>
+		</div>
+		<div class="con2">
+			<p>ajax原理</p>
+			<p class="ans2">1．创建XMLHttpRequest实例对象。2．使用open（）和send（）方法向服务器发送资源请求。3. 使用responseText或responseXML属性，获取服务器返回的数据。4. 使用onreadystatechange函数监听服务器的响应</p>
+		</div>
+		<div class="con3">
+			<p>描述jsonp</p>
+			<p class="ans3">动态创建JS标签，向后端发送请求，返回回调函数的执行，以数据作为实参传入的一段JS脚本。</p>
+		</div>
+	</div>
+</body>
+<script>
+	var box=document.getElementsByClassName("box")[0];
+	var con=document.getElementsByClassName("con")[0];
+	var ans=document.getElementsByClassName("ans")[0];
+	var con1=document.getElementsByClassName("con1")[0];
+	var ans1=document.getElementsByClassName("ans1")[0];
+	var con2=document.getElementsByClassName("con2")[0];
+	var ans2=document.getElementsByClassName("ans2")[0];
+	var con3=document.getElementsByClassName("con3")[0];
+	var ans3=document.getElementsByClassName("ans3")[0];
+	con.onclick=function(){
+		ans.style.top="25px";
+	}
+	con1.onclick=function(){
+		ans1.style.left="0";
+	}
+	con2.onclick=function(){
+		ans2.style.left="0";
+	}
+	con3.onclick=function(){
+		ans3.style.left="0";
+	}
+</script>
+</html>
